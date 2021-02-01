@@ -1,20 +1,25 @@
 const containter = document.querySelector("#container");
 const clearButton = document.querySelector("#clear");
+const sizeButton = document.querySelector("#changeSize");
 
 setContainer(16);
 createSquares(16);
 
-let squareNum = prompt("How many squares per row?");
-setContainer(squareNum);
-createSquares(squareNum);
-const squares = document.querySelectorAll(".square");
+let squares = document.querySelectorAll(".square");
 
-squares.forEach(e => {
-    e.addEventListener("mouseover", function(){
-        let hue = numberRandomizer();
-        e.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
-    });
+sizeButton.addEventListener("click", function(){
+    let squareNum = prompt("How many squares per row? (100 max)");
+    if(squareNum > 100){
+        squareNum = 100;
+    }
+    setContainer(squareNum);
+    createSquares(squareNum);
+    squares = document.querySelectorAll(".square");
+
+    sketchFunction();
 });
+
+sketchFunction();
 
 clearButton.addEventListener("click", function(){
     squares.forEach(e => {
@@ -39,8 +44,6 @@ function createSquares(squareNum){
 
 function setContainer(squareNum){
     let width = squareNum * 20 + (squareNum - 1) * 2;
-    container.style.width = `${width}px`;
-    container.style.height = `${width}px`;
     container.style.gridTemplateColumns = `repeat(${squareNum}, auto)`;
     container.style.gridTemplateRows = `repeat(${squareNum}, auto)`;
 }
@@ -49,4 +52,13 @@ function removeAllChildNodes(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
+}
+
+function sketchFunction(){
+    squares.forEach(e => {
+        e.addEventListener("mouseover", function(){
+            let hue = numberRandomizer();
+            e.style.backgroundColor = `hsl(${hue}, 100%, 0%)`;
+        });
+    });
 }
