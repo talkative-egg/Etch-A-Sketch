@@ -6,10 +6,17 @@ h2{
     text-align: center;
 }
 
+button{
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #container{
     display: grid;
     margin-left: auto;
     margin-right: auto;
+    padding-left: auto;
+    padding-right: auto;
     margin-top: 3em;
     background-color: black;
     width: 350px;
