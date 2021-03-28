@@ -58,7 +58,7 @@ function sketchFunction(){
     squares.forEach(e => {
         e.addEventListener("mouseover", function(){
             let hue = numberRandomizer();
-            e.style.backgroundColor = `hsl(${hue}, 100%, 0%)`;
+            e.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
         });
     });
 }
